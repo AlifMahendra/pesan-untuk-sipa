@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Caramel:regular" rel="stylesheet" />
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /*loop through a collection of all HTML elements:*/
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain attribute:*/
+        file = elmnt.getAttribute("photo-include-html");
+        if (file) {
+          /*make an HTTP request using the attribute value as the file name:*/
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+              if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+              if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+              /*remove the attribute, and call this function once more:*/
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /*exit the function:*/
+          return;
+        }
+      }
+    };
+  </script>
+
+</head>
+
+<body class="bg-gray-900 pb-20" style="font-family: poppins;">
+  <div class="max-w-lg mx-auto px-10 pt-10">
+    <div class="bg-yellow-400 rounded-md flex items-center p-2 px-4 gap-4">
+      <ion-icon name="calendar-sharp" class="text-yellow-400 bg-gray-900 p-1 rounded-md text-md"></ion-icon>
+      <div class="flex flex-col justify-center text-xs">
+        <h1 class="font-medium text-4xl -mb-2" style="font-family: caramel;">Your Birthday </h1>
+        <div class="flex gap-1 items-center">
+          <p id="hari"></p>,
+          <p id="tanggal"></p>
+          <p id="bulan"></p>
+          <p id="tahun"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-lg px-10 pt-5 font-medium mx-auto">
+    <div
+      class="bg-gradient-to-b from-yellow-400 to-pink-400 text-sm p-2 w-full rounded-md flex items-center justify-center flex-col">
+      <div class="flex items-center gap-2">
+        <p>dear</p>
+      </div>
+      <div class="flex items-center gap-2 items-center">
+        <div class="w-7 h-1 bg-black rounded-full"></div>
+        <h1 class="text-4xl" style="font-family: caramel;">Sifa Aulia Rosyida</h1>
+        <div class="w-7 h-1 bg-black rounded-full"></div>
+      </div>
+      <div class="flex gap-1">
+        <div class="p-1 rounded-full bg-black"></div>
+        <div class="p-1 rounded-full bg-black"></div>
+        <div class="p-1 rounded-full bg-black"></div>
+        <div class="p-1 rounded-full bg-black"></div>
+      </div>
+      <div class="py-5 px-5 ">
+        <p class="text-xs break-all">
+          <span class="mr-3 "></span>
+          met ultah sipaa, ki kata kata met ultah dari alip lewat kene.
+          semoga tambah pinter, tambah sukses, tapi nek wes sukses oj lali
+          karo kancane. ki aku menulis sedikit kata kata indah, anjay indah
+          . wes angger woco wae
+          <br>
+          <span class="mr-3 "></span>
+          aku pingin ngomong thanks wes dadi koncoku seng paling apik,
+          aku ngomong koncoku seng paling apik mergo kwe wng seng gelem
+          tak ajak muter muter. aku ngeroso kwe sangat berharga go aku.
+          thank banget wes gelem dadi koncoku.
+        </p>
+      </div>
+      <div class="w-full px-5 my-10 flex justify-end text-xs">
+        <div class="flex flex-col items-center">
+          <p>dari teman dekatmu :</p>
+          <h1 class="font-medium text-4xl" style="font-family: caramel;">Alif</h1>
+          <p>Semarang, 25 desember 2022</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pt-5 px-10 max-w-lg mx-auto">
+    <div class="bg-pink-500 rounded-md flex items-center p-2 px-4 gap-4">
+      <ion-icon name="images-sharp" class="text-pink-500 bg-gray-900 p-1 rounded-md text-md"></ion-icon>
+      <div class="flex flex-col justify-center text-xs">
+        <h1 class="font-medium text-4xl -mb-2" style="font-family: caramel;">Our memories</h1>
+        <p>kenangan luwh ama alipp wkwkwk</p>
+      </div>
+    </div>
+  </div>
+  <div class="pt-5 px-10 max-w-lg mx-auto">
+    <div
+      class="bg-gradient-to-b from-pink-500 to-purple-500 via-orange-500 rounded-md flex items-center justify-center flex-col p-4 px-4 gap-4">
+      <div photo-include-html="include/photo.html" class="gap-4 flex-col flex"></div>
+    </div>
+  </div>
+
+  <script>
+    var date = new Date();
+
+    // gat day programm
+    var dayRaw = date.getDay();
+    var dayData = ['minggu', 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu'];
+    var day = dayData[dayRaw];
+    document.getElementById("hari").innerHTML = day;
+
+    // gat month programm
+    var monthRaw = date.getMonth();
+    var monthData = ['Januari', 'Februari', 'Maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'oktober', 'november', 'desember'];
+    var month = monthData[monthRaw];
+    document.getElementById("bulan").innerHTML = month;
+
+    // get date programm
+    var tanggal = date.getDate();
+    document.getElementById("tanggal").innerHTML = tanggal;
+
+    // get year programm
+    var year = date.getFullYear();
+    document.getElementById("tahun").innerHTML = year;
+
+  </script>
+  <script>
+    includeHTML();
+  </script>
+</body>
+
+</html>
